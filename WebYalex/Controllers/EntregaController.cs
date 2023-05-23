@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,7 +21,28 @@ namespace WebYalex.Controllers
             }
         }
 
-        // GET: Entrega/Details/5
+        public ActionResult convertirImagenE(int id)
+        {
+            using (DbModels context = new DbModels())
+            {
+                var imagenE = context.entrega.Where(i => i.id_entrega == id).FirstOrDefault();
+                return File(imagenE.imagenestado_entrega, "image/jpeg");
+
+            }
+
+        }
+
+        public ActionResult convertirImagenD(int id)
+        {
+            using (DbModels context = new DbModels())
+            {
+                var imagenD = context.entrega.Where(i => i.id_entrega == id).FirstOrDefault();
+                return File(imagenD.imagenestado_devolucion, "image/jpeg");
+
+            }
+        } 
+
+            // GET: Entrega/Details/5
         public ActionResult Details(int id)
         {
             using (DbModels context = new DbModels())
@@ -53,13 +75,32 @@ namespace WebYalex.Controllers
 
         // POST: Entrega/Create
         [HttpPost]
-        public ActionResult Create(entrega entregas)
+        public ActionResult Create(entrega entregas, HttpPostedFileBase imagenesE, HttpPostedFileBase imagenesD)
         {
             try
             {
                 // TODO: Add insert logic here
                 using (DbModels context = new DbModels())
                 {
+                    if (imagenesE != null && imagenesE.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var binaryEntrega = new BinaryReader(imagenesE.InputStream))
+                        {
+                            imagenData = binaryEntrega.ReadBytes(imagenesE.ContentLength);
+                        }
+                        entregas.imagenestado_entrega = imagenData;
+                    }
+                    if (imagenesD != null && imagenesD.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+
+                        using (var binaryEntrega = new BinaryReader(imagenesD.InputStream))
+                        {
+                            imagenData = binaryEntrega.ReadBytes(imagenesD.ContentLength);
+                        }
+                        entregas.imagenestado_devolucion = imagenData;
+                    }
                     context.entrega.Add(entregas);
                     context.SaveChanges();
                 }
@@ -102,13 +143,31 @@ namespace WebYalex.Controllers
 
         // POST: Entrega/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, entrega entrega)
+        public ActionResult Edit(int id, entrega entrega, HttpPostedFileBase imagenesE, HttpPostedFileBase imagenesD)
         {
             try
             {
                 // TODO: Add update logic here
                 using (DbModels context = new DbModels())
                 {
+                    if (imagenesE != null && imagenesE.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var binaryEntrega = new BinaryReader(imagenesE.InputStream))
+                        {
+                            imagenData = binaryEntrega.ReadBytes(imagenesE.ContentLength);
+                        }
+                        entrega.imagenestado_entrega = imagenData;
+                    }
+                    if (imagenesD != null && imagenesD.ContentLength > 0)
+                    {
+                        byte[] imagenData = null;
+                        using (var binaryEntrega = new BinaryReader(imagenesD.InputStream))
+                        {
+                            imagenData = binaryEntrega.ReadBytes(imagenesD.ContentLength);
+                        }
+                        entrega.imagenestado_devolucion = imagenData;
+                    }
                     context.Entry(entrega).State = EntityState.Modified;
                     context.SaveChanges();
                 }

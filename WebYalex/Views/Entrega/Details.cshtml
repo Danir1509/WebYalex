@@ -42,20 +42,18 @@
             @Html.DisplayFor(model => model.descripestado_devolucion)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.imagenestado_entrega)
-        </dt>
-
         <dd>
             @Html.DisplayFor(model => model.imagenestado_entrega)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imagenestado_devolucion)
-        </dt>
+        <dd>
+            <img width="50" height="50" src="@Url.Action("convertirImagenE","Entrega", new { id = Model.id_entrega})" />
+        </dd>
 
         <dd>
             @Html.DisplayFor(model => model.imagenestado_devolucion)
+        </dd>
+        <dd>
+            <img width="50" height="50" src="@Url.Action("convertirImagenD","Entrega", new { id = Model.id_entrega})" />
         </dd>
 
         <dt>

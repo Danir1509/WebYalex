@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,8 @@ namespace WebYalex.Controllers
     [Autenticado]
     public class ContratosController : Controller
     {
+
+
         // GET: Contratos
         public ActionResult Index()
         {
