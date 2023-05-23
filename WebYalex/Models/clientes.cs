@@ -11,7 +11,8 @@ namespace WebYalex.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,19 +23,30 @@ namespace WebYalex.Models
             this.entrega = new HashSet<entrega>();
             this.reserva = new HashSet<reserva>();
         }
-    
+
+        [Display(Name = "#: ")]
         public int id_cliente { get; set; }
+        [Display(Name = "Nombre")]
         public string nombres { get; set; }
+        [Display(Name = "Apellido: ")]
         public string apellidos { get; set; }
+        [Display(Name = "Direccion: ")]
         public string direccion { get; set; }
+        [Display(Name = "Telefono: ")]
         public string telefono { get; set; }
+        [Display(Name = "Correo: ")]
         public string correo { get; set; }
+        [Display(Name = "Licencia: ")]
         public string licencia { get; set; }
+        [Display(Name = "Dui: ")]
         public string dui { get; set; }
+        [Display(Name = "Estado: ")]
         public string estado { get; set; }
+        [Display(Name = "Contrasena: ")]
         public string contrasena { get; set; }
+        [Display(Name = "Rol: ")]
         public string rol { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<alquileres> alquileres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

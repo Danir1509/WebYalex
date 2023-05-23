@@ -11,7 +11,8 @@ namespace WebYalex.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +21,18 @@ namespace WebYalex.Models
             this.entrega = new HashSet<entrega>();
             this.reserva = new HashSet<reserva>();
         }
-    
+
+        [Display(Name = "#: ")]
         public int id_empleado { get; set; }
+        [Display(Name = "Nombre: ")]
         public string nombre { get; set; }
+        [Display(Name = "Usuario: ")]
         public string usuario { get; set; }
+        [Display(Name = "Contrasena: ")]
         public string contrasena { get; set; }
+        [Display(Name = "Rol: ")]
         public string rol { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entrega> entrega { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

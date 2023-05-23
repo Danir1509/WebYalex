@@ -11,17 +11,31 @@ namespace WebYalex.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class reserva
     {
+        [Display(Name = "ID Reserva")]
         public int id_reserva { get; set; }
+
+        [Display(Name = "ID Cliente")]
         public int id_cliente { get; set; }
+
+        [Display(Name = "ID Vehiculo")]
         public int id_vehiculo { get; set; }
+
+        [Display(Name = "Costo Estimado")]
         public decimal costoestimado { get; set; }
+
+        [Display(Name = "ID Empleado")]
         public int id_empleado { get; set; }
+
+        [Display(Name = "Hora")]
         public string hora { get; set; }
+
+        [Display(Name = "Fecha")]
         public string fecha { get; set; }
-    
+
         public virtual clientes clientes { get; set; }
         public virtual empleado empleado { get; set; }
         public virtual vehiculo vehiculo { get; set; }

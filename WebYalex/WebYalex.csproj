@@ -100,6 +100,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -181,10 +184,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\DbContextLocal.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AlquilerController.cs" />
+    <Compile Include="Controllers\ClienteAdminController.cs" />
+    <Compile Include="Controllers\ClienteCreateController.cs" />
+    <Compile Include="Controllers\ClienteEmpleController.cs" />
     <Compile Include="Controllers\ContratosController.cs" />
+    <Compile Include="Controllers\EmpleadoAdminController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\EmpleadoCreateController.cs" />
+    <Compile Include="Controllers\EmpleadoEmpleController.cs" />
+    <Compile Include="Controllers\EntregaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReservaController.cs" />
+    <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +255,14 @@
     <Content Include="Content\Css\login.css" />
     <Content Include="Content\Css\registro.css" />
     <Content Include="Content\Css\style.css" />
+    <Content Include="Content\dist\bootstrap-clockpicker.css" />
+    <Content Include="Content\dist\bootstrap-clockpicker.js" />
+    <Content Include="Content\dist\bootstrap-clockpicker.min.css" />
+    <Content Include="Content\dist\bootstrap-clockpicker.min.js" />
+    <Content Include="Content\dist\jquery-clockpicker.css" />
+    <Content Include="Content\dist\jquery-clockpicker.js" />
+    <Content Include="Content\dist\jquery-clockpicker.min.css" />
+    <Content Include="Content\dist\jquery-clockpicker.min.js" />
     <Content Include="Content\Img\accent.png" />
     <Content Include="Content\Img\aeropuerto.png" />
     <Content Include="Content\Img\carrofondo.png" />
@@ -272,6 +293,10 @@
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
     <Content Include="readme.txt" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\DbModel.edmx">
@@ -281,6 +306,7 @@
     <Content Include="Models\DbModel.edmx.diagram">
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -318,6 +344,47 @@
     <Content Include="Views\Contratos\Create.cshtml" />
     <Content Include="Views\Contratos\Edit.cshtml" />
     <Content Include="Views\Contratos\Delete.cshtml" />
+    <Content Include="Views\Vehiculo\Index.cshtml" />
+    <Content Include="Views\Vehiculo\Details.cshtml" />
+    <Content Include="Views\Vehiculo\Create.cshtml" />
+    <Content Include="Views\Vehiculo\Edit.cshtml" />
+    <Content Include="Views\Vehiculo\Delete.cshtml" />
+    <Content Include="Views\Empleado\Vehiculo.cshtml" />
+    <Content Include="Views\Alquiler\Index.cshtml" />
+    <Content Include="Views\Alquiler\Details.cshtml" />
+    <Content Include="Views\Alquiler\Create.cshtml" />
+    <Content Include="Views\Alquiler\Edit.cshtml" />
+    <Content Include="Views\Alquiler\Delete.cshtml" />
+    <Content Include="Views\Reserva\Index.cshtml" />
+    <Content Include="Views\Reserva\Details.cshtml" />
+    <Content Include="Views\Reserva\Create.cshtml" />
+    <Content Include="Views\Reserva\Edit.cshtml" />
+    <Content Include="Views\Reserva\Delete.cshtml" />
+    <Content Include="Views\Entrega\Index.cshtml" />
+    <Content Include="Views\Entrega\Details.cshtml" />
+    <Content Include="Views\Entrega\Create.cshtml" />
+    <Content Include="Views\Entrega\Edit.cshtml" />
+    <Content Include="Views\Entrega\Delete.cshtml" />
+    <Content Include="Views\ClienteAdmin\Index.cshtml" />
+    <Content Include="Views\ClienteAdmin\Details.cshtml" />
+    <Content Include="Views\ClienteAdmin\Create.cshtml" />
+    <Content Include="Views\ClienteAdmin\Edit.cshtml" />
+    <Content Include="Views\ClienteAdmin\Delete.cshtml" />
+    <Content Include="Views\EmpleadoAdmin\Index.cshtml" />
+    <Content Include="Views\EmpleadoAdmin\Details.cshtml" />
+    <Content Include="Views\EmpleadoAdmin\Create.cshtml" />
+    <Content Include="Views\EmpleadoAdmin\Edit.cshtml" />
+    <Content Include="Views\EmpleadoAdmin\Delete.cshtml" />
+    <Content Include="Views\ClienteEmple\Index.cshtml" />
+    <Content Include="Views\ClienteEmple\Create.cshtml" />
+    <Content Include="Views\EmpleadoEmple\Index.cshtml" />
+    <Content Include="Views\EmpleadoEmple\Create.cshtml" />
+    <Content Include="Views\EmpleadoCreate\Index.cshtml" />
+    <Content Include="Views\EmpleadoCreate\Create.cshtml" />
+    <Content Include="Views\ClienteCreate\Index.cshtml" />
+    <Content Include="Views\ClienteCreate\Create.cshtml" />
+    <Content Include="Views\Empleado\ContratoEmpleado.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

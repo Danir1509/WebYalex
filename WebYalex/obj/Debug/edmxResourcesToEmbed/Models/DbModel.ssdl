@@ -64,8 +64,8 @@
     <Property Name="kilometraje" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="descripestado_entrega" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="descripestado_devolucion" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="imagenestado_entrega" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="imagenestado_devolucion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="imagenestado_entrega" Type="image" Nullable="false" />
+    <Property Name="imagenestado_devolucion" Type="image" Nullable="false" />
     <Property Name="fecha_entrega" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="fecha_devolucion" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="id_cliente" Type="int" Nullable="false" />

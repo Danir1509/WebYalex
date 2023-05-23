@@ -1,0 +1,134 @@
+﻿@model IEnumerable<WebYalex.Models.contratos>
+
+@{
+    ViewBag.Title = "Contrato";
+}
+<br /><br />
+<p>
+    <a href="@Url.Action("Create", "Empleado")" class="btn btn-success">Agregar Contratos</a>
+</p>
+<div>
+    @Html.Label("Buscar:")
+    @Html.TextBox("searchString", null, new { id = "searchStringInput", @class = "form-control" })
+</div>
+<table id="tablaContratos" class="table table-striped">
+    <thead class="table-active">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_contrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_alquiler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_vehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.referencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.num_referencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo_pago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total_renta)
+            </th>
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_contrato)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_cliente)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_alquiler)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_vehiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fecha)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dias)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.telefono)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.correo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.referencia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.num_referencia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tipo_pago)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.total_renta)
+    </td>
+</tr>
+}
+
+</table>
+
+@section scripts {
+    <script>$(function () {
+            // Capturar cambios en el textbox
+            $('#searchStringInput').on('input', function () {
+                var searchString = $(this).val().trim().toLowerCase();
+                filterTable(searchString);
+            });
+
+
+
+            // Función para filtrar la tabla
+            function filterTable(searchString) {
+                $('#tablaContratos tbody tr').each(function () {
+                    var rowText = $(this).text().trim().toLowerCase();
+                    if (rowText.includes(searchString)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            }
+        });</script>
+}
+
+<br />
+<br />
+<br />
+<br />

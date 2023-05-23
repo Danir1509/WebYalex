@@ -11,22 +11,46 @@ namespace WebYalex.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class entrega
     {
+        [Display(Name = "ID Entrega")]
         public int id_entrega { get; set; }
+
+        [Display(Name = "Kilometraje")]
         public string kilometraje { get; set; }
+
+        [Display(Name = "Descripcion Estado Entrega")]
         public string descripestado_entrega { get; set; }
+
+        [Display(Name = "Descripcion Estado Devolución")]
         public string descripestado_devolucion { get; set; }
-        public string imagenestado_entrega { get; set; }
-        public string imagenestado_devolucion { get; set; }
+
+        [Display(Name = "Fecha Entrega")]
         public string fecha_entrega { get; set; }
+
+        [Display(Name = "Fecha Devolución")]
         public string fecha_devolucion { get; set; }
+
+        [Display(Name = "ID Cliente")]
         public int id_cliente { get; set; }
+
+        [Display(Name = "ID Empleado")]
         public int id_empleado { get; set; }
+
+        [Display(Name = "ID Vehiculo")]
         public int id_vehiculo { get; set; }
+
+        [Display(Name = "ID Contrato")]
         public int id_contrato { get; set; }
-    
+
+        [Display(Name = "Img Estado Entrega")]
+        public byte[] imagenestado_entrega { get; set; }
+
+        [Display(Name = "Img Estado Devolución")]
+        public byte[] imagenestado_devolucion { get; set; }
+
         public virtual clientes clientes { get; set; }
         public virtual contratos contratos { get; set; }
         public virtual empleado empleado { get; set; }

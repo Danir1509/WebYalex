@@ -11,7 +11,8 @@ namespace WebYalex.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class alquileres
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,15 +20,30 @@ namespace WebYalex.Models
         {
             this.contratos = new HashSet<contratos>();
         }
-    
+
+        [Display(Name = "ID Alquiler")]
         public int id_alquiler { get; set; }
+
+        [Display(Name = "ID Cliente")]
         public int id_cliente { get; set; }
+
+        [Display(Name = "Costo Alquiler")]
         public decimal costoalquiler { get; set; }
+
+        [Display(Name = "Estado Alquiler")]
         public string estado { get; set; }
+
+        [Display(Name = " ID Vehiculo")]
         public int id_vehiculo { get; set; }
+
+        [Display(Name = "Fecha Inicio Alquiler")]
+
         public string inicio_alquiler { get; set; }
+
+        [Display(Name = "Fecha Finalizacion Alquiler")]
+
         public string finalizacion_alquiler { get; set; }
-    
+
         public virtual clientes clientes { get; set; }
         public virtual vehiculo vehiculo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
