@@ -741,3 +741,4 @@ C:\Users\Isabel\Documents\REPGITHUB\WebYalex\WebYalex\obj\Debug\WebYalex.csproj.
 C:\Users\Isabel\Documents\REPGITHUB\WebYalex\WebYalex\obj\Debug\WebYalex.csproj.CopyComplete
 C:\Users\Isabel\Documents\REPGITHUB\WebYalex\WebYalex\obj\Debug\WebYalex.dll
 C:\Users\Isabel\Documents\REPGITHUB\WebYalex\WebYalex\obj\Debug\WebYalex.pdb
+C:\Users\Isabel\Documents\REPGITHUB\WebYalex\WebYalex\obj\Debug\WebYalex.csproj.AssemblyReference.cache
