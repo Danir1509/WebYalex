@@ -56,59 +56,59 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_entrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.kilometraje)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripestado_entrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripestado_devolucion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenestado_entrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenestado_devolucion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_entrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_devolucion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_cliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_empleado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_vehiculo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_contrato)
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.id_entrega }, new { @class = "btn btn-warning" })
-                </div>
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Detalle", "Details", new { id = item.id_entrega }, new { @class = "btn btn-primary" })
-                </div>
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_entrega }, new { @class = "btn btn-danger" })
-                </div>
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_entrega)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.kilometraje)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.descripestado_entrega)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.descripestado_devolucion)
+    </td>
+    <td>
+        <img width="50" height="50" src="@Url.Action("convertirImagenE","Entrega", new { id = item.id_entrega})" />
+    </td>
+    <td>
+        <img width="50" height="50" src="@Url.Action("convertirImagenD","Entrega", new { id = item.id_entrega})" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fecha_entrega)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fecha_devolucion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_cliente)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_vehiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_contrato)
+    </td>
+    <td>
+        <div class="action-buttons">
+            @Html.ActionLink("Editar", "Edit", new { id = item.id_entrega }, new { @class = "btn btn-warning" })
+        </div>
+    </td>
+    <td>
+        <div class="action-buttons">
+            @Html.ActionLink("Detalle", "Details", new { id = item.id_entrega }, new { @class = "btn btn-primary" })
+        </div>
+    </td>
+    <td>
+        <div class="action-buttons">
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.id_entrega }, new { @class = "btn btn-danger" })
+        </div>
+    </td>
+</tr>
     }
 
 </table>

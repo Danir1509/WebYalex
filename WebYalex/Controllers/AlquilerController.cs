@@ -1,9 +1,13 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebYalex.App_Start;
 using WebYalex.Models;
 
 namespace WebYalex.Controllers
@@ -139,6 +143,52 @@ namespace WebYalex.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public ActionResult RptAlquiler()
+        {
+            return View();
+        }
+
+        public ActionResult DescargarReporteAlquiler()
+        {
+            try
+            {
+                var rpt = new ReportClass();
+                rpt.FileName = Server.MapPath("/Reportes/ReporteAlquiler.rpt");
+                rpt.Load();
+
+                //Report connection
+                //rpt.SetParameterValue("DptoId", codigo);
+                //rptH.SetParameterValue("ParamAlgo", algo);
+
+                // Report connection
+                var connInfo = CrystalReportsCnn.GetConnectionInfo();
+                TableLogOnInfo logonInfo = new TableLogOnInfo();
+                Tables tables;
+                tables = rpt.Database.Tables;
+                foreach (Table table in tables)
+                {
+                    logonInfo = table.LogOnInfo;
+                    logonInfo.ConnectionInfo = connInfo;
+                    table.ApplyLogOnInfo(logonInfo);
+                }
+
+                Response.Buffer = false;
+                Response.ClearContent();
+                Response.ClearHeaders();
+
+                //En PDF
+                Stream stream = rpt.ExportToStream(ExportFormatType.PortableDocFormat);
+                rpt.Dispose();
+                rpt.Close();
+                return new FileStreamResult(stream, "application/pdf");
+
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
