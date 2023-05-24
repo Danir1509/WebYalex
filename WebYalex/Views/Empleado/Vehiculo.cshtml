@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<WebYalex.Models.vehiculo>
 
-@{
-    ViewBag.Title = "Vehiculo";
-}
+@{ ViewBag.Title = "Vehiculo"; }
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
@@ -20,6 +18,10 @@
 <br />
 <h2 class="color-letras">Consulta de Registros</h2>
 
+<a href="@Url.Action("PrintVehiculo", "Reportes")" class="btn btn-info" target="_blank">Reporte Vehiculo</a>
+<br />
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
@@ -63,45 +65,44 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_vehiculo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.placa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.marca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipo_vehiculo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipo_transmision)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.categoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.condicion_vehiculo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.consumo_combus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.precio_dia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.anio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_vehiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.placa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.marca)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tipo_vehiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tipo_transmision)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.categoria)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.condicion_vehiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.capacidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.consumo_combus)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.precio_dia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.anio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.estado)
+    </td>
 
-        </tr>
-    }
+</tr>}
 
 </table>
