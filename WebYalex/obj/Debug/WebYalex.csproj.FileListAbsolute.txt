@@ -757,3 +757,17 @@ C:\Users\50360\Downloads\Nueva carpeta (4)\WebYalex-main\WebYalex\bin\CrystalDec
 C:\Users\50360\Downloads\Nueva carpeta (4)\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\50360\Downloads\Nueva carpeta (4)\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\50360\Downloads\Nueva carpeta (4)\WebYalex-main\WebYalex\bin\stdole.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\Rotativa.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Yilbert\Desktop\WebYalex-main\WebYalex\bin\stdole.dll

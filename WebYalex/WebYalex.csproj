@@ -397,6 +397,7 @@
     <Content Include="Views\Empleado\ContratoEmpleado.cshtml" />
     <Content Include="Views\Empleado\Create.cshtml" />
     <Content Include="Views\Reportes\PrintContrato.cshtml" />
+    <Content Include="Views\Reportes\PrintVehiculo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

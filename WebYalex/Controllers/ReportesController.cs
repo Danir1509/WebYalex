@@ -33,5 +33,24 @@ namespace WebYalex.Controllers
                 return new FileStreamResult(memoryStream, "application/pdf");
             }
         }
+
+        public ActionResult PrintVehiculo()
+        {
+            using (DbModels context = new DbModels())
+            {
+
+                var vehiculos = context.vehiculo.ToList();
+                DateTime fechaActual = DateTime.Now;
+                ViewData["FechaActual"] = fechaActual;
+
+                int cantidadVehiculos = vehiculos.Count;
+                ViewData["CantidadVehiculos"] = cantidadVehiculos;
+
+                var pdfBytes = new Rotativa.ViewAsPdf("PrintVehiculo", vehiculos).BuildPdf(this.ControllerContext);
+                var memoryStream = new MemoryStream(pdfBytes);
+                return new FileStreamResult(memoryStream, "application/pdf");
+
+            }
+        }
     }
 }
