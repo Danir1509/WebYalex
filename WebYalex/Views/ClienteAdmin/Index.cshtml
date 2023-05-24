@@ -9,6 +9,10 @@
 @*<p>
     @Html.ActionLink("+ Create Nuevo Cliente", "Create", "", new { @class = "btn btn-success" })
 </p>*@
+
+<p>
+    <a href="@Url.Action("PrintCliente", "Reportes")" class="btn btn-info" target="_blank">Reporte Clientes</a>
+</p>
 <table class="table">
     <tr>
         <th>

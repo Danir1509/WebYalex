@@ -7,6 +7,7 @@ using WebYalex.Models;
 
 namespace WebYalex.Controllers
 {
+    [Autenticado]
     public class EmpleadoEmpleController : Controller
     {
         // GET: EmpleadoEmple

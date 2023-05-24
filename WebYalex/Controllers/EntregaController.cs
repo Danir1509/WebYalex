@@ -9,6 +9,8 @@ using WebYalex.Models;
 
 namespace WebYalex.Controllers
 {
+
+    [Autenticado]
     public class EntregaController : Controller
     {
         [Autenticado]

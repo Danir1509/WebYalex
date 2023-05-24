@@ -13,6 +13,11 @@
     @Html.Label("Buscar:")
     @Html.TextBox("searchString", null, new { id = "searchStringInput", @class = "form-control" })
 </div>
+
+<p>
+    <a href="@Url.Action("PrintEmpleado", "Reportes")" class="btn btn-info" target="_blank">Reporte Empleados</a>
+</p>
+
 <table id="tablaEmpleado" class="table">
     <tr class="empleado-row">
         <th>

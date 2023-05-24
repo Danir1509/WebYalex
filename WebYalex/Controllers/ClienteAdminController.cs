@@ -8,6 +8,7 @@ using WebYalex.Models;
 
 namespace WebYalex.Controllers
 {
+    [Autenticado]
     public class ClienteAdminController : Controller
     {
         // GET: ClienteAdmin

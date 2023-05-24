@@ -52,5 +52,52 @@ namespace WebYalex.Controllers
 
             }
         }
+
+
+
+        public ActionResult PrintEmpleado()
+        {
+            using (DbModels context = new DbModels())
+            {
+
+                var empleado = context.empleado.ToList();
+                DateTime fechaActual = DateTime.Now;
+                ViewData["FechaActual"] = fechaActual;
+
+                int cantidadEmpleado = empleado.Count;
+                ViewData["CantidadEmpleado"] = cantidadEmpleado;
+
+                var pdfBytes = new Rotativa.ViewAsPdf("PrintEmpleado", empleado).BuildPdf(this.ControllerContext);
+                var memoryStream = new MemoryStream(pdfBytes);
+                return new FileStreamResult(memoryStream, "application/pdf");
+
+            }
+        }
+
+
+        public ActionResult PrintCliente()
+        {
+            using (DbModels context = new DbModels())
+            {
+
+                var cliente = context.clientes.ToList();
+                DateTime fechaActual = DateTime.Now;
+                ViewData["FechaActual"] = fechaActual;
+
+                int cantidadCliente = cliente.Count;
+                ViewData["CantidadCliente"] = cantidadCliente;
+
+                var pdfBytes = new Rotativa.ViewAsPdf("PrintCliente", cliente).BuildPdf(this.ControllerContext);
+                var memoryStream = new MemoryStream(pdfBytes);
+                return new FileStreamResult(memoryStream, "application/pdf");
+
+            }
+        }
+
+
+
+
+
+
     }
 }
