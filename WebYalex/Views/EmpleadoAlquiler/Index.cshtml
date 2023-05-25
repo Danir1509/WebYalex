@@ -4,7 +4,7 @@
     ViewBag.Title = "Alquileres";
 }
 
-<h2>Tabla Alquileres</h2>
+<h2>Alquileres</h2>
 
 <p>
     @Html.ActionLink("Nuevo Alquiler", "Create", "", new { @class = "btn btn-success" })
@@ -16,7 +16,7 @@
     @Html.TextBox("searchString", null, new { id = "searchStringInput", @class = "form-control" })
 </div>
 <table id="tablaAlquiler" class="table">
-    <tr class="alquiler-row">
+    <tr>
         <th>
             @Html.DisplayNameFor(model => model.id_alquiler)
         </th>
@@ -65,26 +65,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.finalizacion_alquiler)
             </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.id_alquiler }, new { @class = "btn btn-warning" })
-                </div>
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Detalle", "Details", new { id = item.id_alquiler }, new { @class = "btn btn-primary" })
-                </div>
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_alquiler }, new { @class = "btn btn-danger" })
-                </div>
-            </td>
         </tr>
     }
 
 </table>
-
 @section scripts {
     <script>
         $(function () {
@@ -110,4 +94,3 @@
         });
     </script>
 }
-

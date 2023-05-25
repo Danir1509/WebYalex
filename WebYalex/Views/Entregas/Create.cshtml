@@ -1,13 +1,13 @@
 ﻿@model WebYalex.Models.entrega
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Nueva Entrega";
 }
 
-<h2>Edit</h2>
+<h2>Nueva Entrega</h2>
 
 
-@using (Html.BeginForm("Edit", "Entrega", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -47,38 +47,11 @@
             </div>
         </div>
 
-        <<div class="form-group">
-        @Html.Label("Imagen Estado Entrada ", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <img width="280" height="250" src="@Url.Action("convertirImagenE","Entrega", new { id = Model.id_entrega})" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.Label("Cambiar Imagen", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="imagenestado_entrega" id="imagenestado_entrega" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.Label("Imagen Estado Devolución", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <img width="280" height="250" src="@Url.Action("convertirImagenD","Entrega", new { id = Model.id_entrega})" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.Label("Cambiar Imagen", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="imagenestado_devolucion" id="imagenestado_devolucion" />
-        </div>
-    </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.fecha_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha_entrega, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="date" class="form-control" id="fecha_entrega" name="fecha_entrega" pattern="\d{2}/\d{2}/\d{4}" required />
+                @*@Html.EditorFor(model => model.fecha_entrega, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.fecha_entrega, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,7 +59,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fecha_devolucion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha_devolucion, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="date" class="form-control" id="fecha_devolucion" name="fecha_devolucion" pattern="\d{2}/\d{2}/\d{4}" required />
+                @*@Html.EditorFor(model => model.fecha_devolucion, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.fecha_devolucion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -94,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_cliente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_cliente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.id_cliente, ViewBag.listaEmpleados as SelectList, "-- Seleccione un empleado --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_cliente, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -102,7 +76,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_empleado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_empleado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.id_empleado, ViewBag.listaEmpleados as SelectList, "-- Seleccione un empleado --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_empleado, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -110,7 +84,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_vehiculo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_vehiculo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.id_vehiculo, ViewBag.listaVehiculos as SelectList, "-- Seleccione un vehiculo --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_vehiculo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -118,14 +92,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_contrato, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_contrato, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.id_contrato, ViewBag.listaContratos as SelectList, "-- Seleccione un contrato --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_contrato, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

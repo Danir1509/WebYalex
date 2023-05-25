@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WebYalex.Models.entrega>
+
+@{
+    Layout = null;
+}
+
+<style>
+    .table {
+        margin-bottom: 1rem;
+        color: #212529;
+        /*background-color: transparent;*/
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            color: #212529;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+</style>
+
+@{
+    DateTime fechaActual = ViewData["FechaActual"] as DateTime? ?? DateTime.Now;
+}
+<p style="font-size:26px; margin-left:83%;">Fecha: @fechaActual.ToString("dd/MM/yyyy") Hora: @fechaActual.ToString("HH:mm")</p>
+<center>
+    <p style="color:darkred; font-size:40px; font-weight:900;">Yalex Car Rental</p>
+    <img width="470" height="250" src="https://yalexcarrental.com/wp-content/uploads/2023/01/YALEX-CAR-RENTAL-1.png" />
+    <h3>
+        COLONIA DINA, CONTIGUO A CALLE
+        MONSERRAT
+    </h3>
+    <h3> #107 SAN SALVADOR</h3>
+    <h3>
+        EL SALVADOR (503) 6303 7690
+    </h3>
+    <h3>
+        USA (240) 437-6467
+    </h3>
+    <h3>
+        E-mail: yalexcarrental@gmail.com
+    </h3>
+</center>
+<h1 style="color:darkred; font-size:35px; font-weight:900;"> Reporte Entregas</h1>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_entrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kilometraje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripestado_entrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripestado_devolucion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_entrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_devolucion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_vehiculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_contrato)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_entrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kilometraje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripestado_entrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripestado_devolucion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_entrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_devolucion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_empleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_vehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_contrato)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+<p style="font-size:26px; margin-left:66%;">Cantidad de entregas existentes: @(ViewData["CantidadEntregas"] as int?)</p>

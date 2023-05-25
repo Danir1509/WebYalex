@@ -194,10 +194,13 @@
     <Compile Include="Controllers\ClienteEmpleController.cs" />
     <Compile Include="Controllers\ContratosController.cs" />
     <Compile Include="Controllers\EmpleadoAdminController.cs" />
+    <Compile Include="Controllers\EmpleadoAlquilerController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\EmpleadoCreateController.cs" />
     <Compile Include="Controllers\EmpleadoEmpleController.cs" />
-    <Compile Include="Controllers\EntregaController.cs" />
+    <Compile Include="Controllers\EmpleadoEntregaController.cs" />
+    <Compile Include="Controllers\EmpleadoReservaController.cs" />
+    <Compile Include="Controllers\EntregasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportesController.cs" />
@@ -249,12 +252,6 @@
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\ReporteAlquiler.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteAlquiler.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -371,11 +368,6 @@
     <Content Include="Views\Reserva\Create.cshtml" />
     <Content Include="Views\Reserva\Edit.cshtml" />
     <Content Include="Views\Reserva\Delete.cshtml" />
-    <Content Include="Views\Entrega\Index.cshtml" />
-    <Content Include="Views\Entrega\Details.cshtml" />
-    <Content Include="Views\Entrega\Create.cshtml" />
-    <Content Include="Views\Entrega\Edit.cshtml" />
-    <Content Include="Views\Entrega\Delete.cshtml" />
     <Content Include="Views\ClienteAdmin\Index.cshtml" />
     <Content Include="Views\ClienteAdmin\Details.cshtml" />
     <Content Include="Views\ClienteAdmin\Create.cshtml" />
@@ -400,6 +392,20 @@
     <Content Include="Views\Reportes\PrintVehiculo.cshtml" />
     <Content Include="Views\Reportes\PrintEmpleado.cshtml" />
     <Content Include="Views\Reportes\PrintCliente.cshtml" />
+    <Content Include="Views\Reportes\PrintAlquiler.cshtml" />
+    <Content Include="Views\Reportes\PrintReserva.cshtml" />
+    <Content Include="Views\Entregas\Index.cshtml" />
+    <Content Include="Views\Entregas\Details.cshtml" />
+    <Content Include="Views\Entregas\Create.cshtml" />
+    <Content Include="Views\Entregas\Edit.cshtml" />
+    <Content Include="Views\Entregas\Delete.cshtml" />
+    <Content Include="Views\EmpleadoAlquiler\Index.cshtml" />
+    <Content Include="Views\EmpleadoAlquiler\Create.cshtml" />
+    <Content Include="Views\EmpleadoReserva\Index.cshtml" />
+    <Content Include="Views\EmpleadoReserva\Create.cshtml" />
+    <Content Include="Views\EmpleadoEntrega\Index.cshtml" />
+    <Content Include="Views\EmpleadoEntrega\Create.cshtml" />
+    <Content Include="Views\Reportes\PrintEntrega.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -420,12 +426,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reportes\ReporteAlquiler.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteAlquiler.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

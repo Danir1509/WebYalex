@@ -94,7 +94,71 @@ namespace WebYalex.Controllers
             }
         }
 
+        public ActionResult PrintAlquiler()
+        {
+            using (DbModels context = new DbModels())
+            {
 
+
+                var alquiler = context.alquileres.ToList();
+
+                //para mostrar fecha
+                DateTime fechaActual = DateTime.Now;
+                ViewData["FechaActual"] = fechaActual;
+
+                //para mostrar cantidad
+                int cantidadAlquileres = alquiler.Count;
+                ViewData["CantidadAlquileres"] = cantidadAlquileres;
+
+                var pdfBytes = new Rotativa.ViewAsPdf("PrintAlquiler", alquiler).BuildPdf(this.ControllerContext);
+                var memoryStream = new MemoryStream(pdfBytes);
+                return new FileStreamResult(memoryStream, "application/pdf");
+            }
+        }
+
+        public ActionResult PrintReserva()
+        {
+            using (DbModels context = new DbModels())
+            {
+
+
+                var reserva = context.reserva.ToList();
+
+                //para mostrar fecha
+                DateTime fechaActual = DateTime.Now;
+                ViewData["FechaActual"] = fechaActual;
+
+                //para mostrar cantidad
+                int cantidadReservas = reserva.Count;
+                ViewData["CantidadReservas"] = cantidadReservas;
+
+                var pdfBytes = new Rotativa.ViewAsPdf("PrintReserva", reserva).BuildPdf(this.ControllerContext);
+                var memoryStream = new MemoryStream(pdfBytes);
+                return new FileStreamResult(memoryStream, "application/pdf");
+            }
+        }
+
+        public ActionResult PrintEntrega()
+        {
+            using (DbModels context = new DbModels())
+            {
+
+
+                var entrega = context.entrega.ToList();
+
+                //para mostrar fecha
+                DateTime fechaActual = DateTime.Now;
+                ViewData["FechaActual"] = fechaActual;
+
+                //para mostrar cantidad
+                int cantidadEntregas = entrega.Count;
+                ViewData["CantidadEntregas"] = cantidadEntregas;
+
+                var pdfBytes = new Rotativa.ViewAsPdf("PrintEntrega", entrega).BuildPdf(this.ControllerContext);
+                var memoryStream = new MemoryStream(pdfBytes);
+                return new FileStreamResult(memoryStream, "application/pdf");
+            }
+        }
 
 
 

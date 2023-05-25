@@ -64,26 +64,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.fecha)
             </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.id_reserva }, new { @class = "btn btn-warning" })
-                </div>
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Detalles", "Details", new { id = item.id_reserva }, new { @class = "btn btn-primary" })
-                </div>
-            </td>
-            <td>
-                <div class="action-buttons">
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_reserva }, new { @class = "btn btn-danger" })
-                </div>
-            </td>
+            
         </tr>
     }
 
 </table>
-
 @section scripts {
     <script>
         $(function () {

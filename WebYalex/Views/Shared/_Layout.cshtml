@@ -95,7 +95,7 @@
                                     <li>@Html.ActionLink("Consulta Contratos", "Index", "Contratos")</li>
                                     <li>@Html.ActionLink("Consulta Vehiculos", "Index", "Vehiculo")</li>
                                     <li>@Html.ActionLink("Consulta Empleados", "Index", "EmpleadoAdmin")</li>
-                                    <li>@Html.ActionLink("Consulta Entregas", "Index", "Entrega")</li>
+                                    <li>@Html.ActionLink("Consulta Entregas", "Index", "Entregas")</li>
                                 </ul>
                             </li>
 
@@ -103,11 +103,12 @@
                                 <a href="#" class="dropdown-toggle" style="background-color: transparent " data-toggle="dropdown">Reportes <span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="background-color: #e57057 ">
                                     <li>@Html.ActionLink("Listado Cliente", "PrintCliente", "Reportes")</li>
-                                    <li>@Html.ActionLink("Listado Reserva", "Index", "Admin")</li>
-                                    <li>@Html.ActionLink("Listado Alquileres", "Index", "Admin")</li>
+                                    <li>@Html.ActionLink("Listado Reserva", "PrintReserva", "Reportes")</li>
+                                    <li>@Html.ActionLink("Listado Alquileres", "PrintAlquiler", "Reportes")</li>
                                     <li>@Html.ActionLink("Listado Contratos", "PrintContrato", "Reportes")</li>
                                     <li>@Html.ActionLink("Listado Vehiculos", "PrintVehiculo", "Reportes")</li>
                                     <li>@Html.ActionLink("Listado Empleados", "PrintEmpleado", "Reportes")</li>
+                                    <li>@Html.ActionLink("Listado Entregas", "PrintEntrega", "Reportes")</li>
                                 </ul>
                             </li>
 
@@ -127,11 +128,12 @@
                                 <a href="#" class="dropdown-toggle" style="background-color: transparent " data-toggle="dropdown">Mantenimientos <span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="background-color: #e57057 ">
                                     <li>@Html.ActionLink("Consulta Cliente", "Index", "ClienteEmple")</li>
-                                    <li>@Html.ActionLink("Consulta Reserva", "Index", "Empleado")</li>
-                                    <li>@Html.ActionLink("Consulta Alquileres", "Index", "Empleado")</li>
+                                    <li>@Html.ActionLink("Consulta Reserva", "Index", "EmpleadoReserva")</li>
+                                    <li>@Html.ActionLink("Consulta Alquileres", "Index", "EmpleadoAlquiler")</li>
                                     <li>@Html.ActionLink("Consulta Contratos", "ContratoEmpleado", "Empleado")</li>
                                     <li>@Html.ActionLink("Consulta Vehiculos", "Vehiculo", "Empleado")</li>
                                     <li>@Html.ActionLink("Consulta Empleados", "Index", "EmpleadoEmple")</li>
+                                    <li>@Html.ActionLink("Consulta Entregas", "Index", "EmpleadoEntrega")</li>
                                 </ul>
                             </li>
 
@@ -139,11 +141,12 @@
                                 <a href="#" class="dropdown-toggle" style="background-color: transparent " data-toggle="dropdown">Reportes <span class="caret"></span></a>
                                 <ul class="dropdown-menu" style="background-color: #e57057 ">
                                     <li>@Html.ActionLink("Listado Cliente", "PrintCliente", "Reportes")</li>
-                                    <li>@Html.ActionLink("Listado Reserva", "Index", "Empleado")</li>
-                                    <li>@Html.ActionLink("Listado Alquileres", "Index", "Empleado")</li>
+                                    <li>@Html.ActionLink("Listado Reserva", "PrintReserva", "Reportes")</li>
+                                    <li>@Html.ActionLink("Listado Alquileres", "PrintAlquiler", "Reportes")</li>
                                     <li>@Html.ActionLink("Listado Contratos", "PrintContrato", "Reportes")</li>
                                     <li>@Html.ActionLink("Listado Vehiculos", "PrintVehiculo", "Reportes")</li>
                                     <li>@Html.ActionLink("Listado Empleados", "PrintEmpleado", "Reportes")</li>
+                                    <li>@Html.ActionLink("Listado Entregas", "PrintEntrega", "Reportes")</li>
                                 </ul>
                             </li>
 
