@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="yalexrentaModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="entrega">
+    <Key>
+      <PropertyRef Name="id_entrega" />
+    </Key>
+    <Property Name="id_entrega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kilometraje" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripestado_entrega" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripestado_devolucion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="imagenestado_entrega" Type="image" Nullable="false" />
+    <Property Name="imagenestado_devolucion" Type="image" Nullable="false" />
+    <Property Name="fecha_entrega" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="fecha_devolucion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_cliente" Type="int" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="id_vehiculo" Type="int" Nullable="false" />
+    <Property Name="id_contrato" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="yalexrentaModel1StoreContainer">
+    <EntitySet Name="entrega" EntityType="Self.entrega" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

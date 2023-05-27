@@ -1,16 +1,16 @@
 ﻿@model WebYalex.Models.entrega
 
 @{
-    ViewBag.Title = "Editar Entrega";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Editar Entrega</h2>
+<h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Entregas", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>entrega</h4>
         <hr />
@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_entrega, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.id_entrega, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.id_entrega, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -48,9 +48,39 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.imagenestado_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="imagenEstadoEntregaFile" accept="image/*" id="imagenEstadoEntregaFile" onchange="mostrarImagenSeleccionada(this, 'imagenEstadoEntregaPreview')" />
+                @Html.ValidationMessageFor(model => model.imagenestado_entrega, "", new { @class = "text-danger" })
+
+                @if (Model.imagenestado_entrega != null)
+                {
+                    <img src="@Url.Content($"data:image/jpeg;base64,{Convert.ToBase64String(Model.imagenestado_entrega)}")" width="150" height="100" alt="Imagen Estado Entrega" />
+                }
+                <h4>Se actualizara por:</h4>
+                <img id="imagenEstadoEntregaPreview" alt="Vista previa de la imagen" width="150" height="100" style="display: none; " />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.imagenestado_devolucion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="imagenEstadoDevolucionFile" accept="image/*" id="imagenEstadoDevolucionFile" onchange="mostrarImagenSeleccionada(this, 'imagenEstadoDevolucionPreview')" />
+                @Html.ValidationMessageFor(model => model.imagenestado_devolucion, "", new { @class = "text-danger" })
+
+                @if (Model.imagenestado_devolucion != null)
+                {
+                    <img src="@Url.Content($"data:image/jpeg;base64,{Convert.ToBase64String(Model.imagenestado_devolucion)}")" width="150" height="100" alt="Imagen Estado Devolución" />
+                }
+                <h4>Se actualizara por:</h4>
+                <img id="imagenEstadoDevolucionPreview" alt="Vista previa de la imagen" width="150" height="100" style="display: none;" />
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.fecha_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="date" class="form-control" id="fecha_entrega" name="fecha_entrega" pattern="\d{2}/\d{2}/\d{4}" required />
+                @Html.EditorFor(model => model.fecha_entrega, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.fecha_entrega, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +88,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fecha_devolucion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="date" class="form-control" id="fecha_devolucion" name="fecha_devolucion" pattern="\d{2}/\d{2}/\d{4}" required />
+                @Html.EditorFor(model => model.fecha_devolucion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.fecha_devolucion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +96,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_cliente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.id_cliente, (IEnumerable<SelectListItem>)ViewBag.ListaClientes, "-- Seleccione un cliente --", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.id_cliente, (IEnumerable<SelectListItem>)ViewBag.listaClientes, "-- Seleccione un cliente --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_cliente, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -90,7 +120,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_contrato, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.id_contrato, (IEnumerable<SelectListItem>)ViewBag.listaContratos, "-- Seleccione un contrato --", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.id_contrato, (IEnumerable<SelectListItem>)ViewBag.listaContratos, "-- Seleccione un Contrato --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_contrato, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -109,4 +139,22 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
 }
+<script>
+    function mostrarImagenSeleccionada(input, previewId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var preview = document.getElementById(previewId);
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<br />
+<br />
+<br />
+<br />

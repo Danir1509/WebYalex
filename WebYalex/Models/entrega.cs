@@ -27,6 +27,11 @@ namespace WebYalex.Models
         [Display(Name = "Descripcion Estado Devolución")]
         public string descripestado_devolucion { get; set; }
 
+        [Display(Name = "Img Estado Entrega")]
+        public byte[] imagenestado_entrega { get; set; }
+
+        [Display(Name = "Img Estado Devolución")]
+        public byte[] imagenestado_devolucion { get; set; }
         [Display(Name = "Fecha Entrega")]
         public string fecha_entrega { get; set; }
 
@@ -45,11 +50,6 @@ namespace WebYalex.Models
         [Display(Name = "ID Contrato")]
         public int id_contrato { get; set; }
 
-        [Display(Name = "Img Estado Entrega")]
-        public byte[] imagenestado_entrega { get; set; }
-
-        [Display(Name = "Img Estado Devolución")]
-        public byte[] imagenestado_devolucion { get; set; }
 
         public virtual clientes clientes { get; set; }
         public virtual contratos contratos { get; set; }

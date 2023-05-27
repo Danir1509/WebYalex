@@ -1,13 +1,13 @@
 ﻿@model WebYalex.Models.entrega
 
 @{
-    ViewBag.Title = "Nueva Entrega";
+    ViewBag.Title = "Create";
 }
 
-<h2>Nueva Entrega</h2>
+<h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Entregas", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -48,10 +48,27 @@
         </div>
 
         <div class="form-group">
+            @Html.Label("Imagen Estado de Entrega", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="imagenEstadoEntregaFile" accept="image/*" id="imagenEstadoEntregaFile" onchange="mostrarImagenSeleccionada(this, 'imagenEstadoEntregaPreview')" class="form-control" />
+                <h4>Su imagen de visualizacion:</h4>
+                <img id="imagenEstadoEntregaPreview" alt="Vista previa de la imagen" width="150" height="100" style="display: none;" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Imagen Estado de Devolución", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="imagenEstadoDevolucionFile" accept="image/*" id="imagenEstadoDevolucionFile" onchange="mostrarImagenSeleccionada(this, 'imagenEstadoDevolucionPreview')" class="form-control" />
+                <h4>Su imagen de visualizacion:</h4>
+                <img id="imagenEstadoDevolucionPreview" alt="Vista previa de la imagen" width="150" height="100" style="display: none;" />
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.fecha_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="date" class="form-control" id="fecha_entrega" name="fecha_entrega" pattern="\d{2}/\d{2}/\d{4}" required />
-                @*@Html.EditorFor(model => model.fecha_entrega, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.fecha_entrega, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -60,7 +77,6 @@
             @Html.LabelFor(model => model.fecha_devolucion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="date" class="form-control" id="fecha_devolucion" name="fecha_devolucion" pattern="\d{2}/\d{2}/\d{4}" required />
-                @*@Html.EditorFor(model => model.fecha_devolucion, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.fecha_devolucion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -68,7 +84,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_cliente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.id_cliente, ViewBag.listaEmpleados as SelectList, "-- Seleccione un empleado --", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.id_cliente, ViewBag.listaClientes as SelectList, "-- Seleccione un cliente --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_cliente, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -76,7 +92,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_empleado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.id_empleado, ViewBag.listaEmpleados as SelectList, "-- Seleccione un empleado --", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.id_empleado, ViewBag.listaEmpleados as SelectList, "-- Seleccione un Empleado --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.id_empleado, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -112,3 +128,23 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+<script>
+    function mostrarImagenSeleccionada(input, previewId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var preview = document.getElementById(previewId);
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<br />
+<br />
+<br />
+<br />

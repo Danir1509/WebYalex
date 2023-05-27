@@ -68,6 +68,12 @@
             @Html.DisplayNameFor(model => model.descripestado_devolucion)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.imagenestado_entrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagenestado_devolucion)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.fecha_entrega)
         </th>
         <th>
@@ -102,6 +108,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.descripestado_devolucion)
+            </td>
+            <td>
+                <img src="data:image/png;base64,@Convert.ToBase64String(item.imagenestado_entrega)" alt="Estado de entrega" width="150" height="100" />
+            </td>
+            <td>
+                <img src="data:image/png;base64,@Convert.ToBase64String(item.imagenestado_devolucion)" width="150" height="100" alt="Estado de devolución" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fecha_entrega)

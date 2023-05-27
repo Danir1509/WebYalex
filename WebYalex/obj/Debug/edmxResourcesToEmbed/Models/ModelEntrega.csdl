@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="yalexrentaModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="entrega">
+    <Key>
+      <PropertyRef Name="id_entrega" />
+    </Key>
+    <Property Name="id_entrega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kilometraje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripestado_entrega" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripestado_devolucion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imagenestado_entrega" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="imagenestado_devolucion" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="fecha_entrega" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_devolucion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="id_vehiculo" Type="Int32" Nullable="false" />
+    <Property Name="id_contrato" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="yalexrentaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="entrega" EntityType="Self.entrega" />
+  </EntityContainer>
+</Schema>

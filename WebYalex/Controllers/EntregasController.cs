@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +8,7 @@ using WebYalex.Models;
 
 namespace WebYalex.Controllers
 {
+    [Autenticado]
     public class EntregasController : Controller
     {
         // GET: Entregas
@@ -48,17 +49,33 @@ namespace WebYalex.Controllers
 
             }
 
-
             return View();
         }
 
         // POST: Entregas/Create
         [HttpPost]
-        public ActionResult Create(entrega entrega)
+        public ActionResult Create(entrega entrega, HttpPostedFileBase imagenEstadoEntregaFile, HttpPostedFileBase imagenEstadoDevolucionFile)
         {
             try
             {
-                // TODO: Add insert logic here
+                // Obtener los datos de las imágenes
+                if (imagenEstadoEntregaFile != null)
+                {
+                    using (var binaryReader = new BinaryReader(imagenEstadoEntregaFile.InputStream))
+                    {
+                        entrega.imagenestado_entrega = binaryReader.ReadBytes(imagenEstadoEntregaFile.ContentLength);
+                    }
+                }
+
+                if (imagenEstadoDevolucionFile != null)
+                {
+                    using (var binaryReader = new BinaryReader(imagenEstadoDevolucionFile.InputStream))
+                    {
+                        entrega.imagenestado_devolucion = binaryReader.ReadBytes(imagenEstadoDevolucionFile.ContentLength);
+                    }
+                }
+
+                // Guardar los datos en la base de datos
                 using (DbModels context = new DbModels())
                 {
                     context.entrega.Add(entrega);
@@ -80,7 +97,6 @@ namespace WebYalex.Controllers
             {
                 entrega entrega = context.entrega.Find(id);
 
-                /*para traer el nombre del */
                 List<clientes> listaClientes = context.clientes.ToList();
                 int idClienteActual = entrega.id_cliente;
                 ViewBag.listaClientes = new SelectList(listaClientes, "id_cliente", "nombres", idClienteActual);
@@ -99,18 +115,61 @@ namespace WebYalex.Controllers
 
                 return View(entrega);
             }
+
+            
         }
 
         // POST: Entregas/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, entrega entrega)
+        public ActionResult Edit(int id, entrega entrega, HttpPostedFileBase imagenEstadoEntregaFile, HttpPostedFileBase imagenEstadoDevolucionFile)
         {
             try
             {
-                // TODO: Add update logic here
+                if (imagenEstadoEntregaFile != null)
+                {
+                    using (var binaryReader = new BinaryReader(imagenEstadoEntregaFile.InputStream))
+                    {
+                        entrega.imagenestado_entrega = binaryReader.ReadBytes(imagenEstadoEntregaFile.ContentLength);
+                    }
+                }
+
+                if (imagenEstadoDevolucionFile != null)
+                {
+                    using (var binaryReader = new BinaryReader(imagenEstadoDevolucionFile.InputStream))
+                    {
+                        entrega.imagenestado_devolucion = binaryReader.ReadBytes(imagenEstadoDevolucionFile.ContentLength);
+                    }
+                }
+
                 using (DbModels context = new DbModels())
                 {
-                    context.Entry(entrega).State = EntityState.Modified;
+                    entrega existingEntrega = context.entrega.Find(id);
+
+                    if (existingEntrega == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    existingEntrega.kilometraje = entrega.kilometraje;
+                    existingEntrega.descripestado_entrega = entrega.descripestado_entrega;
+                    existingEntrega.descripestado_devolucion = entrega.descripestado_devolucion;
+                    existingEntrega.fecha_entrega = entrega.fecha_entrega;
+                    existingEntrega.fecha_devolucion = entrega.fecha_devolucion;
+                    existingEntrega.id_cliente = entrega.id_cliente;
+                    existingEntrega.id_empleado = entrega.id_empleado;
+                    existingEntrega.id_vehiculo = entrega.id_vehiculo;
+                    existingEntrega.id_contrato = entrega.id_contrato;
+
+                    if (imagenEstadoEntregaFile != null)
+                    {
+                        existingEntrega.imagenestado_entrega = entrega.imagenestado_entrega;
+                    }
+
+                    if (imagenEstadoDevolucionFile != null)
+                    {
+                        existingEntrega.imagenestado_devolucion = entrega.imagenestado_devolucion;
+                    }
+
                     context.SaveChanges();
                 }
 
@@ -137,15 +196,13 @@ namespace WebYalex.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
                 using (DbModels context = new DbModels())
                 {
-                    entrega entregas = context.entrega.Where(x => x.id_entrega == id).FirstOrDefault();
-                    context.entrega.Remove(entregas);
+                    entrega entrega = context.entrega.Where(x => x.id_entrega == id).FirstOrDefault();
+                    context.entrega.Remove(entrega);
                     context.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-
-                return RedirectToAction("Index");
             }
             catch
             {

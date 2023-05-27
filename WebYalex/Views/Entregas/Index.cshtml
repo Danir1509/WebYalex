@@ -1,21 +1,18 @@
 ﻿@model IEnumerable<WebYalex.Models.entrega>
 
 @{
-    ViewBag.Title = "Entregas";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nueva Entrega", "Create", "", new { @class = "btn btn-success" })
-    <a href="@Url.Action("PrintEntrega", "Reportes")" class="btn btn-info" target="_blank">Reporte Entregas</a>
+    @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-success" })
 </p>
-
-<div>
-    @Html.Label("Buscar:")
-    @Html.TextBox("searchString", null, new { id = "searchStringInput", @class = "form-control" })
-</div>
-<table id="tablaEntregas" class="table">
+<p>
+    <a href="@Url.Action("PrintEntrega", "Reportes")" class="btn btn-info" target="_blank">Reporte Contrato</a>
+</p>
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.id_entrega)
@@ -28,6 +25,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.descripestado_devolucion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagenestado_entrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagenestado_devolucion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.fecha_entrega)
@@ -50,8 +53,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model) {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.id_entrega)
@@ -65,6 +67,13 @@
     <td>
         @Html.DisplayFor(modelItem => item.descripestado_devolucion)
     </td>
+    <td>
+        <img src="data:image/png;base64,@Convert.ToBase64String(item.imagenestado_entrega)" alt="Estado de entrega" width="150" height="100" />
+    </td>
+    <td>
+        <img src="data:image/png;base64,@Convert.ToBase64String(item.imagenestado_devolucion)" width="150" height="100" alt="Estado de devolución" />
+    </td>
+
     <td>
         @Html.DisplayFor(modelItem => item.fecha_entrega)
     </td>
@@ -85,12 +94,14 @@
     </td>
     <td>
         <div class="action-buttons">
+
             @Html.ActionLink("Editar", "Edit", new { id = item.id_entrega }, new { @class = "btn btn-warning" })
+            <span class="bi bi-info-circle-fill"></span>
         </div>
     </td>
     <td>
         <div class="action-buttons">
-            @Html.ActionLink("Detalle", "Details", new { id = item.id_entrega }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Detalles", "Details", new { id = item.id_entrega }, new { @class = "btn btn-primary" })
         </div>
     </td>
     <td>
@@ -99,31 +110,10 @@
         </div>
     </td>
 </tr>
-    }
+}
 
 </table>
-@section scripts {
-    <script>
-        $(function () {
-            // Capturar cambios en el textbox
-            $('#searchStringInput').on('input', function () {
-                var searchString = $(this).val().trim().toLowerCase();
-                filterTable(searchString);
-            });
-
-
-
-            // Función para filtrar la tabla
-            function filterTable(searchString) {
-                $('#tablaEntregas tbody tr').each(function () {
-                    var rowText = $(this).text().trim().toLowerCase();
-                    if (rowText.includes(searchString)) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            }
-        });
-    </script>
-}
+<br />
+<br />
+<br />
+<br />
